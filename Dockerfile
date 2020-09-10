@@ -18,12 +18,13 @@ ENV USBHELPER_ROOT=/home/user/usbhelper
 RUN mkdir $USBHELPER_ROOT
 WORKDIR $USBHELPER_ROOT
 
-COPY scripts/install_usbhelper.sh /scripts/install_usbhelper.sh
-RUN /scripts/install_usbhelper.sh
-
-# Temp Fix Broken Packages
+# Patch Broken Packages
 COPY -chown=user:user files/USBHelperLauncher.zip /home/user/usbhelper/
 RUN unzip /home/user/usbhelper/USBHelperLauncher.zip
+
+# Set up usbhelper
+COPY scripts/install_usbhelper.sh /scripts/install_usbhelper.sh
+RUN /scripts/install_usbhelper.sh
 
 # add desktop icon
 COPY --chown=user:user files/WiiUUSBHelper.desktop /home/user/Desktop/
