@@ -21,6 +21,10 @@ WORKDIR $USBHELPER_ROOT
 COPY scripts/install_usbhelper.sh /scripts/install_usbhelper.sh
 RUN /scripts/install_usbhelper.sh
 
+# Temp Fix Broken Packages
+COPY -chown=user:user files/USBHelperLauncher.zip /home/user/usbhelper/
+RUN unzip /home/user/usbhelper/USBHelperLauncher.zip
+
 # add desktop icon
 COPY --chown=user:user files/WiiUUSBHelper.desktop /home/user/Desktop/
 COPY --chown=user:user files/USBHelperLauncher.png "$USBHELPER_ROOT/"
