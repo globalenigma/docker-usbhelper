@@ -19,7 +19,7 @@ RUN mkdir $USBHELPER_ROOT
 WORKDIR $USBHELPER_ROOT
 
 # Patch Broken Packages
-COPY -chown=user:user files/USBHelperLauncher.zip /home/user/usbhelper/
+COPY --chown=user:user files/USBHelperLauncher.zip /home/user/usbhelper/
 RUN unzip /home/user/usbhelper/USBHelperLauncher.zip
 
 # Set up usbhelper
